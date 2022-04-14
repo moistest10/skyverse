@@ -171,6 +171,23 @@ body {
 .for-mob {
   display: none;
 }
+
+.object{
+    animation: dribble 6.9s ease-in-out 0s infinite alternate forwards;
+}
+
+@keyframes dribble{
+    0% {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+}
+100% {
+    -webkit-transform: translateY(50px);
+    transform: translateY(50px);
+}
+}
+
+
 @media (max-width: 767px) {
   .land-page div#countdown ul li {
     margin-right: 30px;

